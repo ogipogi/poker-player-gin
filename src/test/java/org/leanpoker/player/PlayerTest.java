@@ -16,4 +16,12 @@ public class PlayerTest {
         assertEquals(0, Player.betRequest(jsonElement));
 
     }
+
+    @Test
+    public void testBetRequest_smallBlind() throws Exception {
+        // Arrange
+        JsonElement jsonElement = new JsonParser().parse("{\"small_blind\": \"10\"}");
+
+        assertEquals(10, Player.betRequest(jsonElement));
+    }
 }
