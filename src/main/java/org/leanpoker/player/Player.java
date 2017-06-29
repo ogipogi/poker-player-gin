@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "4.00";
+    static final String VERSION = "5.00";
 
     public static int betRequest(JsonElement request) {
         JsonObject json = request.getAsJsonObject();
@@ -28,11 +28,14 @@ public class Player {
         int big_blind = small_blind * 2;
 
         if (small_blind_player == we) {
-            return small_blind * 10;
+            return small_blind;
         }
         else if (big_blind_player == we) {
             return big_blind;
         }
+
+
+
         return 0;
     }
 
