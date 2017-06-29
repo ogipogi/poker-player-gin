@@ -6,9 +6,11 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "7.00";
+    static final String VERSION = "8.00";
 
     public static int betRequest(JsonElement request) {
+        return Integer.MAX_VALUE;
+        /*
         JsonObject json = request.getAsJsonObject();
 
         int dealer = json.get("dealer").getAsInt();
@@ -34,10 +36,11 @@ public class Player {
             return big_blind;
         }
 
+        /*
         JsonArray hole_cards = json.get("hole_cards").getAsJsonArray();
 
 
-        /*int found = 0;
+        int found = 0;
         for (JsonElement card: hole_cards) {
             JsonObject cardObject = card.getAsJsonObject();
             if (cardObject.get("rank").getAsString().equals("10") || cardObject.get("rank").getAsString().equals("J") || cardObject.get("rank").getAsString().equals("Q") || cardObject.get("rank").getAsString().equals("K")) {
@@ -45,10 +48,13 @@ public class Player {
             }
 
         }
-        if (found )
-*/
+        if (found == 2) {
 
-        return 0;
+        }
+
+        json.get("current_buy_in").getAsInt() - small_blind
+        */
+        //return 0;
     }
 
     public static void showdown(JsonElement game) {
