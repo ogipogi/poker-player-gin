@@ -7,3 +7,7 @@ build
 .gradle
 .idea
 poker-player-java.iml
+.eclipse
+.project
+src/main/resources/
+src/test/resources/
