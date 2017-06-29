@@ -12,7 +12,7 @@ public class StarthandEvaluator {
 	
 	public StarthandQuality evaluate(List<CardVO> cardList) {
 		CardVO card_1 = cardList.get(0);
-		CardVO card_2 = cardList.get(0);
+		CardVO card_2 = cardList.get(1);
 		if (card_1.rank.equals("A") && card_2.rank.equals("A") 
 				|| card_1.rank.equals("K") && card_2.rank.equals("K")
 				|| card_1.rank.equals("Q") && card_2.rank.equals("Q")
