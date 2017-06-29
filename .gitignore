@@ -11,3 +11,4 @@ poker-player-java.iml
 .project
 src/main/resources/
 src/test/resources/
+/bin/

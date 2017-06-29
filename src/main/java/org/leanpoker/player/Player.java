@@ -1,5 +1,11 @@
 package org.leanpoker.player;
 
+
+import java.util.Arrays;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -63,6 +69,17 @@ public class Player {
         }
 
         return 0;
+    }
+    
+    public GameVO getGameVO(JsonElement request) {
+    	Gson gson = new GsonBuilder().create();
+		return gson.fromJson(request, GameVO.class);
+    }
+    
+    public List<PlayerVO> getPlayerVOList(JsonElement request) {
+    	Gson gson = new GsonBuilder().create();
+    	PlayerVO[] playerVOs = gson.fromJson(request, PlayerVO[].class);
+    	return Arrays.asList(playerVOs);
     }
 
     public static void showdown(JsonElement game) {
