@@ -12,10 +12,11 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "12.00";
+    static final String VERSION = "14.00";
 
     public static int betRequest(JsonElement request) {
-        JsonObject json = request.getAsJsonObject();
+        return Integer.MAX_VALUE;
+        /*JsonObject json = request.getAsJsonObject();
 
         GameVO gameVO = getGameVO(json);
 
@@ -32,8 +33,6 @@ public class Player {
             }
         }
 
-
-
         int found = 0;
         List<CardVO> hole_cards = currentPlayer.hole_cards;
         if (hole_cards.size() >= 2) {
@@ -47,22 +46,21 @@ public class Player {
         }
 
 
-//        for (JsonElement card: currentPlayer.hole_cards) {
-//            JsonObject cardObject = card.getAsJsonObject();
-//            if (cardObject.get("rank").getAsString().equals("10") || cardObject.get("rank").getAsString().equals("J") || cardObject.get("rank").getAsString().equals("Q") || cardObject.get("rank").getAsString().equals("K")) {
-//
-//                found++;
-//            }
-//
-//
-//
-//        }
-//        if (found == 2) {
-//            return Integer.MAX_VALUE;
-//        }
+        for (CardVO card: hole_cards) {
+            if (card.rank.equals("10") || card.rank.equals("J") || card.rank.equals("Q") || card.rank.equals("K")) {
+                found++;
+            }
+
+
+
+        }
+        if (found == 2) {
+            return Integer.MAX_VALUE;
+        }
 
 
         return currentBet;
+        */
     }
     
     public static GameVO getGameVO(JsonElement request) {
