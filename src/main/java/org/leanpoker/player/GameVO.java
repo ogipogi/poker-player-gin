@@ -13,4 +13,5 @@ public class GameVO {
 	public List<CardVO> community_cards;
 	public int current_buy_in;
 	public int pot;
+	public List<PlayerVO> players;
 }
