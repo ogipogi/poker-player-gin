@@ -10,10 +10,7 @@ public class Player {
     static final String VERSION = "Default Java folding player";
 
     public static int betRequest(JsonElement request) {
-        JsonObject json = request.getAsJsonObject();
-        int smallBlind = json.get("small_blind").getAsInt();
-
-        return 0 + smallBlind;
+        return 70;
     }
 
     public static void showdown(JsonElement game) {
