@@ -12,23 +12,19 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "10.00";
+    static final String VERSION = "11.00";
 
-    public int betRequest(JsonElement request) {
+    public static int betRequest(JsonElement request) {
         JsonObject json = request.getAsJsonObject();
 
         GameVO gameVO = getGameVO(json);
 
-        int dealer = gameVO.dealer;
-        int small_blind_player = dealer + 1;
-        int big_blind_player = dealer + 2;
-        int id = 0;
 
         int currentBet = 0;
         List<PlayerVO> players = getPlayerVOList(json);
         for (PlayerVO player : players) {
             if (player.name.contains("Gin")) {
-                id = player.id;
+
                 currentBet = player.bet;
                 currentBet = gameVO.current_buy_in - currentBet;
             }
@@ -69,12 +65,12 @@ public class Player {
         return currentBet;
     }
     
-    public GameVO getGameVO(JsonElement request) {
+    public static GameVO getGameVO(JsonElement request) {
     	Gson gson = new GsonBuilder().create();
 		return gson.fromJson(request, GameVO.class);
     }
     
-    public List<PlayerVO> getPlayerVOList(JsonElement request) {
+    public static List<PlayerVO> getPlayerVOList(JsonElement request) {
     	Gson gson = new GsonBuilder().create();
     	PlayerVO[] playerVOs = gson.fromJson(request, PlayerVO[].class);
     	return Arrays.asList(playerVOs);
