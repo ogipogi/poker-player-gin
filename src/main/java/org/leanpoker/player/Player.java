@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "3.00";
+    static final String VERSION = "4.00";
 
     public static int betRequest(JsonElement request) {
         JsonObject json = request.getAsJsonObject();
