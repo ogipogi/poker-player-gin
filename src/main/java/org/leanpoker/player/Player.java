@@ -35,14 +35,32 @@ public class Player {
 
         switch (evaluate) {
             case VeryGood:
-                return Integer.MAX_VALUE;
             case Good:
+
+                if (!gameVO.community_cards.isEmpty()) {
+                    StarthandEvaluator.StarthandQuality communityCards = evaluator.evaluate(gameVO.community_cards);
+
+                    switch (evaluate) {
+                        case VeryGood:
+                            return currentBet
+                        case Good:
+                            return Integer.MAX_VALUE;
+                        case Middle:
+                            return currentBet;
+                        case Bad:
+                            return 0;
+                    }
+                }
+
+
                 return Integer.MAX_VALUE;
             case Middle:
                 return currentBet;
             case Bad:
                 return 0;
         }
+
+
 
 
         return 0;
