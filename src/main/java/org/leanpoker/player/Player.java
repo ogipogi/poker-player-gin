@@ -28,7 +28,7 @@ public class Player {
         int big_blind = small_blind * 2;
 
         if (small_blind_player == we) {
-            return small_blind;
+            return small_blind * 10;
         }
         else if (big_blind_player == we) {
             return big_blind;
