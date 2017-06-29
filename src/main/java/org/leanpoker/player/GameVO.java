@@ -1,5 +1,7 @@
 package org.leanpoker.player;
 
+import java.util.List;
+
 public class GameVO {
 	public String tournament_id;
 	public String game_id;
@@ -8,7 +10,7 @@ public class GameVO {
 	public int small_blind;
 	public int orbits;
 	public int dealer;
-	// community_cards;
+	public List<CardVO> community_cards;
 	public int current_buy_in;
 	public int pot;
 }

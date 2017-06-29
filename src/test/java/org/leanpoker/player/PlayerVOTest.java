@@ -14,7 +14,12 @@ public class PlayerVOTest {
             "      \"stack\":1000,\n" +
             "      \"status\":\"active\",\n" +
             "      \"bet\":0,\n" +
-            "      \"hole_cards\":[],\n" +
+            "      \"hole_cards\":[" +
+            "{\n" +
+            "      \"rank\":\"K\",\n" +
+            "      \"suit\":spades\n" +
+            "    }" 
+            + "],\n" +
             "      \"version\":\"Version name 1\",\n" +
             "      \"id\":0\n" +
             "    }";
@@ -25,6 +30,7 @@ public class PlayerVOTest {
 		PlayerVO playerVO = gson.fromJson(request, PlayerVO.class);
 		
 		Assert.assertEquals("Player 1", playerVO.name);
+		Assert.assertEquals("K", playerVO.hole_cards.get(0).rank);
 	}
 
 }
