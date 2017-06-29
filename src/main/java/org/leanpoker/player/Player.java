@@ -12,7 +12,7 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "22.00";
+    static final String VERSION = "23.00";
 
     public static int betRequest(JsonElement request) {
         JsonObject json = request.getAsJsonObject();
@@ -37,20 +37,7 @@ public class Player {
             case VeryGood:
             case Good:
 
-                if (!gameVO.community_cards.isEmpty()) {
-                    StarthandEvaluator.StarthandQuality communityCards = evaluator.evaluate(gameVO.community_cards);
 
-                    switch (evaluate) {
-                        case VeryGood:
-                            return currentBet;
-                        case Good:
-                            return Integer.MAX_VALUE;
-                        case Middle:
-                            return Integer.MAX_VALUE;
-                        case Bad:
-                            return Integer.MAX_VALUE;
-                    }
-                }
 
 
                 return Integer.MAX_VALUE;
