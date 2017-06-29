@@ -12,7 +12,7 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "9.00";
+    static final String VERSION = "10.00";
 
     public int betRequest(JsonElement request) {
         JsonObject json = request.getAsJsonObject();
@@ -24,10 +24,13 @@ public class Player {
         int big_blind_player = dealer + 2;
         int id = 0;
 
+        int currentBet = 0;
         List<PlayerVO> players = getPlayerVOList(json);
         for (PlayerVO player : players) {
             if (player.name.contains("Gin")) {
                 id = player.id;
+                currentBet = player.bet;
+                currentBet = gameVO.current_buy_in - currentBet;
             }
         }
 
@@ -62,14 +65,8 @@ public class Player {
             return Integer.MAX_VALUE;
         }
 
-        if (small_blind_player == id) {
-            return small_blind;
-        }
-        else if (big_blind_player == id) {
-            return big_blind;
-        }
 
-        return 0;
+        return currentBet;
     }
     
     public GameVO getGameVO(JsonElement request) {
