@@ -12,13 +12,15 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "18.00";
+    static final String VERSION = "19.00";
 
     public static int betRequest(JsonElement request) {
         JsonObject json = request.getAsJsonObject();
 
         GameVO gameVO = getGameVO(json);
 
+
+        )
 
         PlayerVO currentPlayer = null;
 
@@ -29,32 +31,26 @@ public class Player {
                 currentPlayer = player;
                 currentBet = player.bet;
                 currentBet = gameVO.current_buy_in - currentBet;
+
             }
         }
 
-        int found = 0;
-        List<CardVO> hole_cards = currentPlayer.hole_cards;
-        if (hole_cards.size() >= 2) {
-            CardVO cardVO = currentPlayer.hole_cards.get(0);
-            CardVO cardVO1 = currentPlayer.hole_cards.get(1);
+        StarthandEvaluator evaluator = new StarthandEvaluator();
 
-            if (cardVO.rank.equals(cardVO1.rank)) {
+        StarthandEvaluator.StarthandQuality evaluate = evaluator.evaluate(currentPlayer.hole_cards);
+
+
+        switch (evaluate) {
+
+            case VeryGood:
+            case Good:
                 return Integer.MAX_VALUE;
-            }
-
-        }
-
-
-        for (CardVO card: hole_cards) {
-            if (card.rank.equals("10") || card.rank.equals("J") || card.rank.equals("Q") || card.rank.equals("K")) {
-                found++;
-            }
-
-        }
-        if (found == 2) {
-            return  currentBet + 100;
-        } else {
-            return 0;
+                break;
+            case Middle:
+                return currentBet;
+                break;
+            case Bad:
+                return 0;
         }
 
 
