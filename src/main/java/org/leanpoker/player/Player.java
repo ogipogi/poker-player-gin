@@ -45,15 +45,15 @@ public class Player {
             case VeryGood:
             case Good:
                 return Integer.MAX_VALUE;
-                break;
+
             case Middle:
                 return currentBet;
-                break;
+
             case Bad:
                 return 0;
         }
 
-
+    return 0;
     }
     
     public static GameVO getGameVO(JsonElement request) {
