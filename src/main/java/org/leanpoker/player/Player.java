@@ -12,21 +12,22 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "8.00";
+    static final String VERSION = "9.00";
 
-    public static int betRequest(JsonElement request) {
+    public int betRequest(JsonElement request) {
         JsonObject json = request.getAsJsonObject();
 
-        int dealer = json.get("dealer").getAsInt();
+        GameVO gameVO = getGameVO(json);
+
+        int dealer = gameVO.dealer;
         int small_blind_player = dealer + 1;
         int big_blind_player = dealer + 2;
-        int we = 0;
+        int id = 0;
 
-        JsonArray players = json.get("players").getAsJsonArray();
-        for (JsonElement player : players) {
-            JsonObject playerObject = player.getAsJsonObject();
-            if (playerObject.get("name").getAsString().equals("Gin")) {
-                we = playerObject.get("id").getAsInt();
+        List<PlayerVO> players = getPlayerVOList(json);
+        for (PlayerVO player : players) {
+            if (player.name.contains("Gin")) {
+                id = player.id;
             }
         }
 
@@ -61,10 +62,10 @@ public class Player {
             return Integer.MAX_VALUE;
         }
 
-        if (small_blind_player == we) {
+        if (small_blind_player == id) {
             return small_blind;
         }
-        else if (big_blind_player == we) {
+        else if (big_blind_player == id) {
             return big_blind;
         }
 
