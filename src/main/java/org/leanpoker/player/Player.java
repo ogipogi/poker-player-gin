@@ -12,7 +12,7 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "15.00";
+    static final String VERSION = "16.00";
 
     public static int betRequest(JsonElement request) {
         JsonObject json = request.getAsJsonObject();
@@ -58,7 +58,8 @@ public class Player {
         }
 
 
-        return currentBet;
+
+        return currentBet + 100;
     }
     
     public static GameVO getGameVO(JsonElement request) {
