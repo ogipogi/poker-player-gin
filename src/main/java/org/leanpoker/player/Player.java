@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 
 public class Player {
 
-    static final String VERSION = "6.00";
+    static final String VERSION = "7.00";
 
     public static int betRequest(JsonElement request) {
         JsonObject json = request.getAsJsonObject();
@@ -28,7 +28,7 @@ public class Player {
         int big_blind = small_blind * 2;
 
         if (small_blind_player == we) {
-            return small_blind * 100;
+            return small_blind;
         }
         else if (big_blind_player == we) {
             return big_blind;
@@ -36,10 +36,17 @@ public class Player {
 
         JsonArray hole_cards = json.get("hole_cards").getAsJsonArray();
 
-        for (JsonElement card: hole_cards) {
-            card.getAsJsonObject();
-        }
 
+        /*int found = 0;
+        for (JsonElement card: hole_cards) {
+            JsonObject cardObject = card.getAsJsonObject();
+            if (cardObject.get("rank").getAsString().equals("10") || cardObject.get("rank").getAsString().equals("J") || cardObject.get("rank").getAsString().equals("Q") || cardObject.get("rank").getAsString().equals("K")) {
+                found++;
+            }
+
+        }
+        if (found )
+*/
 
         return 0;
     }
