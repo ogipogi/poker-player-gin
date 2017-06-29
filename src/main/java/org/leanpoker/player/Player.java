@@ -42,7 +42,7 @@ public class Player {
 
                     switch (evaluate) {
                         case VeryGood:
-                            return currentBet
+                            return currentBet;
                         case Good:
                             return Integer.MAX_VALUE;
                         case Middle:
