@@ -20,7 +20,7 @@ public class Player {
         GameVO gameVO = getGameVO(json);
 
 
-        )
+
 
         PlayerVO currentPlayer = null;
 
